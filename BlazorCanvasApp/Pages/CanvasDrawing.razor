@@ -72,7 +72,8 @@
                 await currentCanvasContext.SaveAsync();
                 await currentCanvasContext.SetFillStyleAsync("Black");
                 await currentCanvasContext.SetFontAsync("15pt Ariel");
-                await currentCanvasContext.FillTextAsync("Widget Industry Market Share Breakup %", 160, 120);
+                await currentCanvasContext.FillTextAsync(
+                    "Widget Industry Market Share Breakup %", 160, 120);
                 await currentCanvasContext.SetFontAsync("12pt Ariel");
                 await currentCanvasContext.SetStrokeStyleAsync("Black");
                 double currangle = 0;
@@ -80,10 +81,12 @@
                 for (var i = 0; i < pieChartData.Count; i++)
                 {
                     currangle += (pieChartData[i].PercentageOfSlice * 360) / 100;
-                    await currentCanvasContext.SetFillStyleAsync(pieChartData[i].ColorOfSlice);
+                    await currentCanvasContext.SetFillStyleAsync(
+                        pieChartData[i].ColorOfSlice);
                     await currentCanvasContext.BeginPathAsync();
                     await currentCanvasContext.MoveToAsync(350, 350);
-                    await currentCanvasContext.ArcAsync(350, 350, 200, (Math.PI / 180) * lastangle, 
+                    await currentCanvasContext.ArcAsync(350, 350, 200, 
+                        (Math.PI / 180) * lastangle, 
                         (Math.PI / 180) * currangle, false);
                     await currentCanvasContext.ClosePathAsync();
                     await currentCanvasContext.FillAsync();
