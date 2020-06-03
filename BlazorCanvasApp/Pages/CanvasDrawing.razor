@@ -48,9 +48,24 @@
             await currentCanvasContext.StrokeTextAsync("ClientX: " + mouseX +
                 "   Client Y: " + mouseY, 20, 20);
 
-            pieChartData.Add(new PieChartSlice { Name = "Akshay's Company", PercentageOfSlice = 50, ColorOfSlice = "Blue", LabelX = 287, LabelY = 459 });
-            pieChartData.Add(new PieChartSlice { Name = "John Doe's Company", PercentageOfSlice = 30, ColorOfSlice = "Red", LabelX = 200, LabelY = 260 });
-            pieChartData.Add(new PieChartSlice { Name = "Jane Doe's Company", PercentageOfSlice = 20, ColorOfSlice = "Green", LabelX = 400, LabelY = 280 });
+            pieChartData.Add(new PieChartSlice { 
+                Name = "Akshay's Company", 
+                PercentageOfSlice = 50, 
+                ColorOfSlice = "Blue", 
+                LabelX = 287, 
+                LabelY = 459 });
+            pieChartData.Add(new PieChartSlice { 
+                Name = "John Doe's Company", 
+                PercentageOfSlice = 30, 
+                ColorOfSlice = "Red", 
+                LabelX = 200, 
+                LabelY = 260 });
+            pieChartData.Add(new PieChartSlice {
+                Name = "Jane Doe's Company", 
+                PercentageOfSlice = 20, 
+                ColorOfSlice = "Green", 
+                LabelX = 400, 
+                LabelY = 280 });
 
             if (myCanvas != null && currentCanvasContext != null)
             {
@@ -68,10 +83,12 @@
                     await currentCanvasContext.SetFillStyleAsync(pieChartData[i].ColorOfSlice);
                     await currentCanvasContext.BeginPathAsync();
                     await currentCanvasContext.MoveToAsync(350, 350);
-                    await currentCanvasContext.ArcAsync(350, 350, 200, (Math.PI / 180) * lastangle, (Math.PI / 180) * currangle, false);
+                    await currentCanvasContext.ArcAsync(350, 350, 200, (Math.PI / 180) * lastangle, 
+                        (Math.PI / 180) * currangle, false);
                     await currentCanvasContext.ClosePathAsync();
                     await currentCanvasContext.FillAsync();
-                    await currentCanvasContext.StrokeTextAsync(pieChartData[i].Name, pieChartData[i].LabelX, pieChartData[i].LabelY);
+                    await currentCanvasContext.StrokeTextAsync(pieChartData[i].Name, 
+                        pieChartData[i].LabelX, pieChartData[i].LabelY);
                     lastangle = currangle;
                 }
                 await currentCanvasContext.RestoreAsync();
